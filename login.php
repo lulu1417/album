@@ -1,4 +1,5 @@
 <?php
+session_start();
 header("Content-Type: text/html; charset=utf8");
 if (!isset($_POST["submit"])) {
 	exit("excution error");
@@ -6,11 +7,11 @@ if (!isset($_POST["submit"])) {
 include 'db.php';
 $name = $_POST['name'];
 $password = $_POST['password'];
-
+$_SESSION['username'] = $name;
 if ($name && $password) {
 	$sql = "select * from user where username = '$name' and password='$password'";
-	$resultl = mysqli_query($db, $sql);
-	$rows = mysqli_num_rows($resultl);
+	$result = mysqli_query($db, $sql);
+	$rows = mysqli_num_rows($result);
 	if ($rows) {
 		header("refresh:0;url=welcome.html");
 		exit;
