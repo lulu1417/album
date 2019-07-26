@@ -4,14 +4,18 @@ include 'css.html';
 $name = $_GET['name'];
 ?>
 <body>
-	<div class="home top-right">
-<?php
-echo "<a href='board.php?name=" . $name . "'>Write some messages</a>";
-if(!$name){
-    echo '<a href="index.php">Log in</a>';
-}else{
-    echo '<a href="index.php">Log out</a>';
+	     <div class="flex-center position-ref full-height">
+	<div class="top-right home">
+                <?php
+if (!$name) {
+	echo '<a href="index.php">Log in</a>';
+} else {
+	echo "<a href='board.php?name=" . $name . "'>Write some messages</a>";
+	echo '<a href="index.php">Log out</a>';
 }?>
+     </div>
+
+
 
 </div>
 <div class="note full-height">

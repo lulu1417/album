@@ -5,7 +5,7 @@ include 'css.html';
 <body>
      <div class="flex-center position-ref full-height">
                 <div class="top-right home">
-                        <a href="view.php?name=$_GET[name]">View</a>
+                        <a href="view.php?name="$_GET[name]"">View</a>
                         <a href="index.php">Login</a>
                         <a href="signup.php">Register</a>
                 </div>
