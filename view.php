@@ -6,9 +6,13 @@ $name = $_GET['name'];
 <body>
 	<div class="home top-right">
 <?php
-echo "<a href='board.php?name=" . $name . "'>Write some messages</a>"
-?>
-<a href="index.php">Log out</a>
+echo "<a href='board.php?name=" . $name . "'>Write some messages</a>";
+if(!$name){
+    echo '<a href="index.php">Log in</a>';
+}else{
+    echo '<a href="index.php">Log out</a>';
+}?>
+
 </div>
 <div class="note full-height">
 <?php

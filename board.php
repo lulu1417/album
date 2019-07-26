@@ -19,7 +19,7 @@ $name = $_GET['name'];
                         	<p>SUBJECT</p>
                         	<p><input type="text" name="subject"></p>
                         	<p>CONTENT</p>
-                        	<p><textarea style="width:550px;height:100px;" name="content"></textarea></p>
+                        	<p><textarea style="font-family: 'Nunito', sans-serif; font-size:20px; width:550px;height:100px;" name="content"></textarea></p>
                         	<p><input type="submit" name="submit" value="SEND">
                     <style>
                         input {padding:5px 15px; background:#FFCCCC; border:0 none;

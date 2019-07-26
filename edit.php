@@ -30,15 +30,15 @@ while ($rs = mysqli_fetch_array($result)) {
                         <p>SUBJECT</p>
                         <input type="text" name="subject" value="<?=$rs[subject]?>">
                         <p>CONTENT</p>
-                        <textarea style="width:550px; height:100px;" name="content"><?=$rs[content]?></textarea>
-                        <p><input type="submit" name="submit" value="Save">
+                        <textarea style="font-family: 'Nunito', sans-serif; font-size:20px; width:550px; height:100px;" name="content"><?=$rs[content]?></textarea>
+                        <p><input type="submit" name="submit" value="SAVE">
                     <style>
                         input {padding:5px 15px; background:#ccc; border:0 none;
                         cursor:pointer;
                         -webkit-border-radius: 5px;
                         border-radius: 5px; }
                     </style>
-                        <input type="reset" name="Reset" value="Rewrite">
+                        <input type="reset" name="Reset" value="REWRITE">
                     <style>
                         input {
                             padding:5px 15px;
