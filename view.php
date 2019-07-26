@@ -1,29 +1,40 @@
-<html>
-<head>
 <title>All messages</title>
-</head>
+<?php
+include 'css.html';
+$name = $_GET['name'];
+?>
 <body>
-<a href="board.php">Write some messages</a><p>
+	<div class="home top-right">
+<?php
+echo "<a href='board.php?name=" . $name . "'>Write some messages</a>"
+?>
+<a href="index.php">Log out</a>
+</div>
+<div class="note full-height">
 <?php
 session_start();
 include "db.php";
 $sql = "select * from guestbook";
 $result = mysqli_query($db, $sql);
-$name = $_SESSION['username'];
+$_SESSION['name'] = $name = $_GET['name'];
+
 while ($row = mysqli_fetch_assoc($result)) {
-	echo "No.：" . $row['no'];
-	echo "<br><br>Visitor Name：" . $row['name'];
-	echo "<br><br>Subject：" . $row['subject'];
-	echo "<br><br>Content：" . nl2br($row['content']) . "<br>";
+	echo "<br>Visitor Name：" . $row['name'];
+	echo "<br>Subject：" . $row['subject'];
+	echo "<br>Content：" . nl2br($row['content']) . "<br>";
 	if ($name == $row['name']) {
-		echo '<a href="edit.php?no=' . $row['no'] . '">Edit message content</a>&nbsp|&nbsp<a href="delete.php?no=' . $row['no'] . '">Delete the message</a><br>';
+		echo '
+		<a href=" edit.php?no=' . $row['no'] . '&name=' . $name . '">
+		Edit message content</a>&nbsp|&nbsp<a href="delete.php?no=' . $row['no'] . '">Delete the message</a><br>';
 	}
-	echo "Time：" . $row['time'] . "<br><br>";
+	echo "Time：" . $row['time'] . "<br>";
 	echo "<hr>";
 
 }
+echo "<br>";
+echo '<div class="bottom left position-abs content">';
 echo "There are " . mysqli_num_rows($result) . " messages.";
 ?>
-<br><a href="login.html">Log out</a><p>
+</div>
 </body>
 </html>
