@@ -18,7 +18,7 @@
             }
 
             .full-height {
-                height: 70vh;
+                height: 100vh;
             }
 
             .flex-center {
@@ -57,8 +57,13 @@
             }
             .warning {
                 text-align: center;
+                font-weight: bold;
                 font-size: 25px;
                 top: 100px;
+                color: #AA0000;
+            }
+            .error {
+                font-weight: bold;
                 color: #AA0000;
             }
 
@@ -106,7 +111,7 @@
             }
 
             .m-b-md {
-                margin-bottom: 40px;
+                margin-bottom: 10px;
             }
         </style>
     </head>

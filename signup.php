@@ -1,6 +1,6 @@
 <title>Sign up</title>
 <?php
-include 'css.html';
+include 'style.css';
 ?>
 <body>
      <div class="flex-center position-ref full-height">
@@ -75,7 +75,7 @@ if (isset($_POST['submit'])) {
 		echo '<div class="warning">Incompleted form！ </div>';
 		echo "
 <script>
-setTimeout(function(){window.location.href='login.php';},2000);
+setTimeout(function(){window.location.href='signup.php';},2000);
 </script>";
 	}
 }

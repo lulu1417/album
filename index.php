@@ -1,6 +1,6 @@
 <title>Login</title>
 <?php
-include 'css.html';
+include 'style.css';
 ?>
 <body>
      <div class="flex-center position-ref full-height">
@@ -51,7 +51,7 @@ if (isset($_POST["submit"])) {
 		$result = mysqli_query($db, $sql);
 		$rows = mysqli_num_rows($result);
 		if ($rows) {
-			echo '<div class="sucess">welcome！ </div>';
+			echo '<div class="success">Welcome！ </div>';
 			echo "
 			<script>
 			setTimeout(function(){window.location.href='view.php?name=" . $name . "';},600);
@@ -62,11 +62,11 @@ if (isset($_POST["submit"])) {
 		}
 	} else {
 
-		echo '<div class="warning">Incompleted form！ </div>';
+		echo '<div class="warning">Incompleted form！</div>';
 		echo "
-<script>
-setTimeout(function(){window.location.href='login.php';},2000);
-</script>";
+		<script>
+		setTimeout(function(){window.location.href='index.php';},2000);
+		</script>";
 	}
 	mysqli_close();
 

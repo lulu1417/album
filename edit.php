@@ -1,7 +1,7 @@
 
 <title>Edit Message</title>
 <?php
-include 'css.html';
+include 'style.css';
 $name = $_GET['name'];
 $no = $_GET['no'];
 ?>
@@ -24,16 +24,24 @@ while ($rs = mysqli_fetch_array($result)) {
 	?>
       <div class="content">
                 <div class="m-b-md">
-                    <form name="form1" action="edit.php" method="post">
-                        <input type="hidden" name="no" value="<?=$rs[no]?>">
-                        <input type="hidden" name="name" value="<?=$_GET['name']?>">
-                        <p>SUBJECT</p>
-                        <input type="text" name="subject" value="<?=$rs[subject]?>">
-                        <p>CONTENT</p>
-                        <textarea style="font-family: 'Nunito', sans-serif; font-size:20px; width:550px; height:100px;" name="content"><?=$rs[content]?></textarea>
-                        <p><input type="submit" name="submit" value="SAVE">
+                     <form enctype="multipart/form-data" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <input type="hidden" name="no" value="<?=$rs[no]?>">
+                <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo GW_MAXFILESIZE; ?>" />
+                <input type="hidden" name="name" value="<?=$_GET['name']?>">
+                <p><label for="subject">SUBJECT*</label></p>
+                <input type="text" name="subject" value="<?=$rs[subject]?>">
+                <p><label for="content">CONTENT*</label></p>
+                <p><textarea style="font-family: 'Nunito', sans-serif; font-size:20px; width:550px; height:100px;" name="content"><?=$rs[content]?></textarea></p>
+                <p><label for="screenshot">IMAGE</label></p>
+                <?php
+if ($rs[image]) {?>
+                        <p><img src='images/<?=$rs[image]?>' height="100" ></p><br>
+                    <?php }?>
+                <input type="file" id="screenshot" name="screenshot" />
+                <hr />
+                <input type="submit" value="SEND" name="submit" />
                     <style>
-                        input {padding:5px 15px; background:#ccc; border:0 none;
+                        input {padding:5px 15px; background:#FFCCCC; border:0 none;
                         cursor:pointer;
                         -webkit-border-radius: 5px;
                         border-radius: 5px; }
@@ -52,20 +60,23 @@ while ($rs = mysqli_fetch_array($result)) {
                         }
                     </style>
                     </form>
+
                 </div>
 
 </body>
 </html>
 <?php }
-
 if (isset($_POST[submit])) {
-
 	$no = $_POST['no'];
 	$name = $_POST[name];
 	$subject = $_POST["subject"];
 	$content = $_POST["content"];
-
-	$sql = "update guestbook set subject='$subject',content='$content' where no='$no'";
+	$screenshot = $_FILES['screenshot']['name'];
+	if ($screenshot) {
+		$sql = "update guestbook set name='$name',subject='$subject',content='$content',image='$screenshot' where no='$no'";
+	} else {
+		$sql = "update guestbook set name='$name',subject='$subject',content='$content' where no='$no'";
+	}
 	if (!mysqli_query($db, $sql)) {
 		die(mysqli_error());
 	} else {
