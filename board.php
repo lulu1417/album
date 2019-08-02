@@ -59,6 +59,7 @@ require_once 'appvars.php';
 if (isset($_POST['submit'])) {
 	// Grab the score data from the POST
 	include "db.php";
+	// mysqli_set_charset($db, "utf8");
 	$name = $_POST['name'];
 	$subject = $_POST["subject"];
 	$content = $_POST["content"];

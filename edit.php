@@ -15,7 +15,7 @@ $no = $_GET['no'];
                 </div>
 
 <?php
-$db = mysqli_connect("localhost", "root", "0000", "board") or die(mysqli_error());
+require 'db.php';
 $query = "SELECT * FROM guestbook WHERE  no=" . $_GET['no'];
 $result = mysqli_query($db, $query);
 $no = $_GET['no'];
