@@ -1,4 +1,4 @@
-<title>Board</title>
+<title></title>
 <?php
 include 'style.css';
 $name = $_GET['name'];
